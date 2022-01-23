@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-3 text-center text-info">
+    <!-- string interpolation -->
+    {{ marketName }}
+  </div>
+  <div class="col-md-3 text-center">
+    <!-- string interpolation -->
+    <span class="badge {{ marketOpen ? 'badge-success' : 'badge-danger'}}"> market is {{ marketStatus }}</span>
+  </div>
+  <div class="col-md-2 text-center">
+    <!-- string interpolation -->
+    <span class="badge badge-info"> {{ listSize }} symbols</span>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-3">
+    <input type="text" class="form-control" [(ngModel)]="symbol" placeholder="Add Symbol" (input)="onUpdateSymbol($event)" #symbolElement>
+  </div>
+  <div class="col-sm-3">
+    <button class="btn btn-primary" [disabled]="!marketOpen" (click)="addSymbol()">Add Symbol</button>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="table-responsive">
+      <table class="table table-striped table-md">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Variation (%)</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let stock of stockList" (click)="onSelect(stock)" [ngClass]="{ 'table-active' : selectedStock != null && stock.id === selectedStock.id }">
+            <td>{{ stock.id}}</td>
+            <td>{{ stock.price | number:'1.0-2'}}</td>
+            <td>{{ stock.variation | number:'1.0-4'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <app-stock-details [inputElement]="selectedStock" (stockUpdated)="onStockUpdated($event)"></app-stock-details>
+  </div>
+</div>
+
+<div class="alert alert-warning" role="alert" *ngIf="listSize > 5">
+  You reached the symbol limit.
+</div>
+
+

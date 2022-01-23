@@ -1,0 +1,36 @@
+
+<h1>Original Object</h1>
+
+<p>Order ID: {{ order.id}}</p>
+<p>Customer BSN: {{ order.customer.bsn}}</p>
+<p>Customer BSN: {{ order.customer.name}}</p>
+<input type="text" [(ngModel)]="order.customer.name">
+<p>Delivery Address: </p>
+<p>Street: {{ order.deliveryAddress.street}}</p>
+<p>Number: {{ order.deliveryAddress.number}}</p>
+<p>Postcode: {{ order.deliveryAddress.postCode}}</p>
+<p>city: {{ order.deliveryAddress.city}}</p>
+
+
+<hr>
+
+<button (click)="performCopyAssign()">Copy using assign with shallow copy</button><br>
+<button (click)="performTrueCopy()">Copy using assign with trueCopy (controled by programmer)</button><br>
+<button (click)="performCopyJSONParser()">Copy using JSON parser</button>
+
+
+<h1>Copied Object</h1>
+
+<div *ngIf="orderCopy">
+<p>Order ID: {{ orderCopy.id}}</p>
+<p>Customer BSN: {{ orderCopy.customer.bsn}}</p>
+<p>Customer BSN: {{ orderCopy.customer.name}}</p>
+<p>Street: <input type="text" [(ngModel)]="orderCopy.deliveryAddress.street"></p>
+
+  <p>Number: {{ orderCopy.deliveryAddress.number}}</p>
+<p>Postcode: {{ orderCopy.deliveryAddress.postCode}}</p>
+<p>city: {{ orderCopy.deliveryAddress.city}}</p>
+  <button (click)="showOrderInfo()">Call a method from the copy - better use the inspector :-)</button>
+</div>
+
+

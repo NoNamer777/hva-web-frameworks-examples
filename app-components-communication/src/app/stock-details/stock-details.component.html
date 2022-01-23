@@ -1,0 +1,36 @@
+<div *ngIf="element != null; else noneSelected">
+  <div class="form-group">
+    <label for="idInput">Stock Id (Acronym)</label>
+    <input type="text" class="form-control" id="idInput" placeholder="Id" readonly [(ngModel)]="element.id">
+  </div>
+  <div class="form-group">
+    <label for="priceInput">Price</label>
+    <input type="text" class="form-control" id="priceInput" placeholder="Price" readonly [(ngModel)]="element.price">
+  </div>
+  <div class="form-group">
+    <label for="variationInput">Variation</label>
+    <input type="text" class="form-control" id="variationInput" placeholder="Variation" readonly [(ngModel)]="element.variation">
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="alertInput" [(ngModel)]="element.alert">
+    <label class="form-check-label" for="alertInput">
+      Alert me in case of price variation
+    </label>
+  </div>
+  <div class="form-group">
+    <label for="variationAlertInput">Variation (%)</label>
+    <input type="text" class="form-control" id="variationAlertInput" placeholder="Variation" [(ngModel)]="element.variation">
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <button type="button" class="btn btn-primary" (click)="onUpdateStock()">Update</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noneSelected>
+  <p>Select a stock item from the left panel</p>
+</ng-template>
+
+
+

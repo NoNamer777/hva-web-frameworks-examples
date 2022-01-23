@@ -1,0 +1,46 @@
+<h3>Data transformation with Map + Query Parameters</h3>
+<hr>
+
+<div class="row">
+  <div class="col-sm-2">
+    <input type="text" [(ngModel)]="countryName"
+           class="form-control" id="countryName" placeholder="try Netherlands, Belgium">
+  </div>
+
+  <div class="col-sm-2">
+    <div class="form-check">
+      <input type="checkbox" [(ngModel)]="fulltextSearch"
+             class="form-check-input" id="fulltextSearch">
+      <label class="form-check-label" for="fulltextSearch">Full text search</label>
+    </div>
+  </div>
+
+  <div class="col=sm-1">
+    <button type="button" [disabled]="!countryName || countryName === ''" class="btn btn-primary"
+            (click)="onShowCountries()">Filter Countries</button>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm">
+    <table class="table" *ngIf="errorMessage === null">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Official Languages</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of countries">
+        <td scope="row">{{ c.countryName }}</td>
+        <td>{{ c.officialLanguages }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

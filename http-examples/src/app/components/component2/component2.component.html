@@ -1,0 +1,40 @@
+<h3>HTTP Path Parameters + Error Handling: List of Countries per Currency</h3>
+<hr>
+
+<div class="row">
+  <div class="col-sm-2">
+    <input type="text" [(ngModel)]="currency"
+           class="form-control" id="title" placeholder="Try USD, EUR, GPB, ...">
+  </div>
+  <div class="col=sm-1">
+    <button type="button" [disabled]="!currency || currency === ''" class="btn btn-primary"
+            (click)="onShowCountries()">Filter Countries</button>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-sm">
+    <table class="table" *ngIf="errorMessage === null">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Country Code</th>
+        <th scope="col">Capital</th>
+        <th scope="col">Region</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of countries">
+        <td scope="row">{{ c.name }}</td>
+        <td>{{ c.alpha3Code }}</td>
+        <td>{{ c.capital }}</td>
+        <td>{{ c.region }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

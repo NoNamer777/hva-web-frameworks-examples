@@ -1,0 +1,36 @@
+<h3>Examples sending HTTP GET and PUT requests</h3>
+<hr>
+
+<div class="row">
+  <div class="col-sm">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Acronym</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let q of quizzes">
+        <th scope="row">{{ q.acronym }}</th>
+        <td>{{ q.title }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-info" (click)="onRequestFetch()">Fetch Data</button>&nbsp;
+    <button class="btn btn-primary" (click)="onUpdateData()">Bulk Update Data</button>
+  </div>
+  <div class="col-sm">
+    <div class="form-group">
+      <label for="acronym">Acronym</label>
+      <input type="text" [(ngModel)]="quiz.acronym"
+             class="form-control" id="acronym" placeholder="Enter acronym">
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" [(ngModel)]="quiz.title"
+             class="form-control" id="title" placeholder="Enter title">
+    </div>
+    <button type="button" [disabled]="!isQuizValid()" class="btn btn-primary" (click)="onAddQuiz()">Add Quiz</button>
+  </div>
+</div>

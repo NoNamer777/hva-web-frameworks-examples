@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Router Examples</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Simple Routes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/simple-route">Simple Route to a Component</a>
+          <a class="dropdown-item" routerLink="/programmatic-route">Programmatic navigation</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Parameters
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/router-param/ACME">Router Parameters</a>
+          <a class="dropdown-item" routerLink="/query-param" [queryParams]="{allowEditing:false}">Query Parameters</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/nested-route">Nested Routes</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Extras
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="nav-link" routerLink="/protected-route">Protected Routes</a>
+          <a class="nav-link" routerLink="/deactivate-example">Deactivate</a>
+        </div>
+      </li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <div class="btn-nav">
+          <button *ngIf="isLoggedIn()" class="btn btn-primary btn-small navbar-btn" (click)="onLogout()">Logout</button>
+          <a *ngIf="!isLoggedIn()" class="btn btn-primary btn-small navbar-btn" routerLink="/login">Login</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

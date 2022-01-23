@@ -1,0 +1,24 @@
+<h3>Nested Routes</h3>
+<hr>
+
+<div class="row">
+  <div class="col-sm">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Acronym</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let q of getAllQuizzes()" (click)="onSelectQuiz(q)" [ngClass]="{ 'table-active' : selectedQuiz != null && q.acronym === selectedQuiz.acronym }">
+        <th scope="row">{{ q.acronym }}</th>
+        <td>{{ q.name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm">
+    <router-outlet></router-outlet>
+  </div>
+</div>

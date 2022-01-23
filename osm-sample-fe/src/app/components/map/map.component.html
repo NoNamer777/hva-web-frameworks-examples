@@ -1,0 +1,53 @@
+<style>
+  .map {
+    height: 410px;
+    width: 100%;
+  }
+</style>
+
+<div class="row">
+  <div class="col-sm-8 mb-3 mb-md-0">
+    <div class="card">
+      <h5 class="card-header h5">Map visualisation</h5>
+      <div class="card-body">
+        <div id="map" class="map"></div>
+        <br>
+        <button id="amstelButton" class="btn btn-primary" (click)="goToAmstelCampus()">Go to Amstel Campus</button>&nbsp;
+        <button id="leewenburgButton" class="btn btn-primary" (click)="goToLeewenburgCampus()">Go to Leewenburg Campus</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+
+    <div class="card">
+      <h5 class="card-header h5">Search address</h5>
+      <div class="card-body">
+
+        <div class="form-inline md-form mr-auto mb-4">
+          <input class="form-control mr-sm-2" type="text" placeholder="address" aria-label="Search" [(ngModel)]="searchString" id="searchString">
+          <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="button" [disabled]="!searchString" (click)="lookupAddress()" id="searchButton">Search</button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card" *ngIf="addressInfo" id="searchResult">
+      <h5 class="card-header h5">Address Information</h5>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item">Latitude: {{ addressInfo.lat }}</li>
+          <li class="list-group-item">Longitude: {{ addressInfo.lon }}</li>
+          <li class="list-group-item">House Number: {{ addressInfo.houseNumber }}</li>
+          <li class="list-group-item">Street: {{ addressInfo.streetName }}</li>
+          <li class="list-group-item">City: {{ addressInfo.city }}</li>
+          <li class="list-group-item">Country: {{ addressInfo.country }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>

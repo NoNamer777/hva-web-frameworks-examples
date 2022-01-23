@@ -1,0 +1,17 @@
+
+<h2>List of Quizzes</h2>
+
+<table>
+  <tr>
+    <td>ID</td>
+    <td>Title</td>
+  </tr>
+  <tr *ngFor="let quiz of quizzes" (click)="onSelectQuiz(quiz)">
+    <td>{{ quiz.id }}</td>
+    <td>{{ quiz.title }}</td>
+  </tr>
+</table>
+
+<h2>Details</h2>
+
+<app-quiz-detail [editingQuiz]="selectedQuiz" (quizEdited)="onQuizSaved($event)"></app-quiz-detail>

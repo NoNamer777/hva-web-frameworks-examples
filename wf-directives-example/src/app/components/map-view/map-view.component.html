@@ -1,0 +1,34 @@
+  <div class="row">
+
+    <div class="col-md-6">
+      <img src="/assets/img/nl-map.png" usemap="#image-map">
+      <map name="image-map">
+
+        <!-- TODO 1: Use the *ngFor directive to iterate over provinces,
+             set the coordinates/polygon, and set the region name as a parameter
+             of regionClicked when the user clicks the polygon -->
+
+        <!-- note that provinces is an attribute of your map-view.component.ts -->
+
+        <area shape="poly" *ngFor="let province of provinces" coords="{{ province.mapCoordinates}}" (click)="regionClicked(province.name)"/>
+      </map>
+    </div>
+
+    <!-- TODO 3: Show this div only if there is a selected province (use *ngIf) -->
+    <div class="col-md-6" *ngIf="selectedProvince">
+        <!-- TODO 4: Bind the input fields (name, capital and population with the selected region -->
+        <div class="form-group">
+          <label>Province</label>
+          <input type="text" name="name" placeholder="province name" class="form-control" [(ngModel)]="selectedProvince.name"/>
+        </div>
+        <div class="form-group">
+          <label>Capital</label>
+          <input type="text" name="capital" placeholder="Capital" class="form-control" [(ngModel)]="selectedProvince.capital"/>
+        </div>
+        <div class="form-group">
+          <label>Population</label>
+          <input type="number" name="population" class="form-control" [(ngModel)]="selectedProvince.population"/>
+        </div>
+    </div>
+  </div>
+

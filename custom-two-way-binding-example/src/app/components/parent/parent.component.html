@@ -1,0 +1,7 @@
+<p>parent works!</p>
+
+<p>Counter: {{ balance }}</p>
+
+<button (click)="deposit()">Call deposit from the parent</button>
+
+<app-child [(balanceParam)]="balance"></app-child>

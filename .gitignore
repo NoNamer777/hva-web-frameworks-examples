@@ -1,0 +1,45 @@
+
+# IDE - Intellij
+**/.idea/
+**/*.iml
+**/*.ipr
+**/*.iws
+**/target/
+**/out/
+**/dist/
+**/out-tsc/
+
+# IDE - VSCode
+**/.vscode/
+
+# System Files
+**/.DS_Store
+**/Thumbs.db
+
+# npm, node
+**/node_modules/
+**/package-lock.json
+**/npm-debug.log*
+**/yarn-error.log*
+**/.npm/
+
+# misc
+**/.sass-cache/
+**/connect.lock/
+**/coverage/
+**/libpeerconnection.log/
+**/testem.log
+**/typings/
+
+# e2e
+**/e2e/*.js
+**/e2e/*.map
+
+# IDEs and editors
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+**/.browserslistrc

@@ -1,0 +1,10 @@
+<div *ngIf="editingQuiz">
+  ID: {{ editingQuiz.id }}
+  <input type="text" [(ngModel)]="editingQuiz.title" size="40" placeholder="add your title here">
+  <hr>
+  <button (click)="onSave()">Save</button>
+</div>
+
+<div *ngIf="!editingQuiz">
+  <p>Please select a quiz</p>
+</div>
